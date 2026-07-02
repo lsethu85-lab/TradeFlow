@@ -9,7 +9,6 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
     
     <style>
         /* ==================== CSS RESET & VARIABLES ==================== */
@@ -54,8 +53,7 @@
             --border: #4b5563;
         }
 
-        html,
-        body {
+        html, body {
             height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text);
@@ -124,9 +122,6 @@
             color: var(--text);
             cursor: pointer;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .toggle-sidebar-btn:hover {
@@ -193,53 +188,11 @@
             font-size: 20px;
             color: var(--text);
             transition: var(--transition);
-            position: relative;
         }
 
         .icon-btn:hover {
             background: var(--light-tertiary);
             color: var(--primary);
-        }
-
-        .icon-btn.active {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--danger);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
         }
 
         .content-area {
@@ -301,6 +254,7 @@
             width: 100%;
             font-size: 14px;
             font-weight: 500;
+            text-align: left;
         }
 
         .nav-link:hover {
@@ -333,39 +287,6 @@
 
         .sidebar.collapsed .nav-section-title {
             display: none;
-        }
-
-        .nav-submenu {
-            display: none;
-            padding-left: 30px;
-        }
-
-        .nav-submenu.open {
-            display: block;
-        }
-
-        .nav-submenu-item {
-            padding: 10px 15px;
-            margin-bottom: 5px;
-            color: #cbd5e1;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: var(--transition);
-            font-size: 13px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-        }
-
-        .nav-submenu-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-
-        .nav-submenu-item.active {
-            color: var(--primary);
         }
 
         /* ==================== DASHBOARD GRID ==================== */
@@ -425,13 +346,6 @@
         .btn-small {
             padding: 6px 12px;
             font-size: 12px;
-        }
-
-        .btn-icon {
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            justify-content: center;
         }
 
         .cards-grid {
@@ -505,11 +419,6 @@
             color: var(--danger);
         }
 
-        .card-icon.info {
-            background: #dbeafe;
-            color: var(--info);
-        }
-
         .card-value {
             font-size: 32px;
             font-weight: 700;
@@ -546,16 +455,6 @@
         .badge-danger {
             background: #fee2e2;
             color: #991b1b;
-        }
-
-        .badge-info {
-            background: #dbeafe;
-            color: #0c4a6e;
-        }
-
-        .badge-primary {
-            background: var(--primary-light);
-            color: var(--primary);
         }
 
         /* ==================== TABLES ==================== */
@@ -651,12 +550,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal {
@@ -774,558 +669,14 @@
             gap: 20px;
         }
 
-        /* ==================== TABS ==================== */
-        .tabs {
-            display: flex;
-            border-bottom: 2px solid var(--border);
-            margin-bottom: 20px;
-            background: white;
-            border-radius: 12px 12px 0 0;
-            padding: 0 20px;
-        }
-
-        html.dark-mode .tabs {
-            background: var(--dark-secondary);
-            border-color: var(--dark-tertiary);
-        }
-
-        .tab {
-            padding: 15px 20px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: var(--transition);
-            border-bottom: 3px solid transparent;
-            position: relative;
-            bottom: -2px;
-        }
-
-        .tab:hover {
-            color: var(--text);
-        }
-
-        .tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-
-        .tab-content {
+        .page {
             display: none;
         }
 
-        .tab-content.active {
+        .page.active {
             display: block;
-            animation: fadeIn 0.3s ease-in;
         }
 
-        /* ==================== TOAST NOTIFICATIONS ==================== */
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .toast {
-            background: white;
-            padding: 16px 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 300px;
-            animation: slideInRight 0.3s ease-out;
-        }
-
-        html.dark-mode .toast {
-            background: var(--dark-secondary);
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .toast.success {
-            border-left: 4px solid var(--success);
-        }
-
-        .toast.error {
-            border-left: 4px solid var(--danger);
-        }
-
-        .toast.warning {
-            border-left: 4px solid var(--warning);
-        }
-
-        .toast.info {
-            border-left: 4px solid var(--info);
-        }
-
-        .toast-icon {
-            font-size: 20px;
-        }
-
-        .toast.success .toast-icon {
-            color: var(--success);
-        }
-
-        .toast.error .toast-icon {
-            color: var(--danger);
-        }
-
-        .toast.warning .toast-icon {
-            color: var(--warning);
-        }
-
-        .toast.info .toast-icon {
-            color: var(--info);
-        }
-
-        .toast-message {
-            flex: 1;
-            color: var(--text);
-        }
-
-        .toast-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        /* ==================== DRAG AND DROP ==================== */
-        .drop-zone {
-            border: 2px dashed var(--border);
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--light-secondary);
-        }
-
-        .drop-zone:hover,
-        .drop-zone.active {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .drop-zone-icon {
-            font-size: 48px;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .drop-zone-text {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 80px;
-            }
-
-            .sidebar.collapsed {
-                width: 80px;
-            }
-
-            .logo-text,
-            .nav-link span,
-            .nav-section-title {
-                display: none;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .app-container {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                order: 2;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .sidebar.collapsed {
-                width: 100%;
-            }
-
-            .main-content {
-                flex-direction: column;
-                order: 1;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-                height: auto;
-            }
-
-            .header-left,
-            .header-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .search-box input {
-                width: 100%;
-            }
-
-            .logo {
-                display: none;
-            }
-
-            .nav-menu {
-                display: flex;
-                overflow-x: auto;
-                overflow-y: visible;
-                padding: 0 10px;
-            }
-
-            .nav-item {
-                margin-bottom: 0;
-            }
-
-            .nav-section-title {
-                display: none;
-            }
-
-            .content-area {
-                padding: 15px;
-            }
-
-            .page-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 15px;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            .card-value {
-                font-size: 24px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .modal {
-                width: 95%;
-            }
-
-            .toast-container {
-                top: 10px;
-                right: 10px;
-            }
-
-            .toast {
-                min-width: 280px;
-            }
-
-            table {
-                font-size: 13px;
-            }
-
-            td,
-            th {
-                padding: 10px 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-title {
-                font-size: 20px;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card-value {
-                font-size: 24px;
-            }
-
-            .page-actions {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            table {
-                font-size: 12px;
-            }
-        }
-
-        /* ==================== LOADING SKELETON ==================== */
-        .skeleton {
-            background: linear-gradient(90deg, var(--light-secondary) 25%, var(--light-tertiary) 50%, var(--light-secondary) 75%);
-            background-size: 200% 100%;
-            animation: loading 2s infinite;
-        }
-
-        html.dark-mode .skeleton {
-            background: linear-gradient(90deg, var(--dark-tertiary) 25%, var(--dark-secondary) 50%, var(--dark-tertiary) 75%);
-        }
-
-        @keyframes loading {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        .skeleton-card {
-            height: 120px;
-            border-radius: 12px;
-        }
-
-        .skeleton-row {
-            height: 50px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-        }
-
-        /* ==================== UTILITY CLASSES ==================== */
-        .text-center {
-            text-align: center;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .mt-20 {
-            margin-top: 20px;
-        }
-
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        .p-20 {
-            padding: 20px;
-        }
-
-        .d-flex {
-            display: flex;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .align-center {
-            align-items: center;
-        }
-
-        .gap-10 {
-            gap: 10px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .opacity-50 {
-            opacity: 0.5;
-        }
-
-        .cursor-pointer {
-            cursor: pointer;
-        }
-
-        /* ==================== CHARTS ==================== */
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin-bottom: 30px;
-        }
-
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 1024px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ==================== DOCUMENT CHECKLIST ==================== */
-        .checklist {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        html.dark-mode .checklist {
-            background: var(--dark-secondary);
-            border-color: var(--dark-tertiary);
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        html.dark-mode .checklist-item {
-            border-color: var(--dark-tertiary);
-        }
-
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-
-        .checklist-checkbox {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--primary);
-        }
-
-        .checklist-label {
-            flex: 1;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .checklist-status {
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            background: var(--light-secondary);
-            color: var(--text-secondary);
-        }
-
-        /* ==================== STATUS TIMELINE ==================== */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 15px 0 15px 30px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -22px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid var(--primary);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -14px;
-            top: 32px;
-            width: 2px;
-            height: calc(100% + 8px);
-            background: var(--border);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-item.completed::before {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .timeline-date {
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .timeline-title {
-            font-weight: 600;
-            color: var(--text);
-            margin: 5px 0;
-        }
-
-        .timeline-description {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        /* ==================== CUSTOM SCROLLBAR ==================== */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--light-secondary);
-        }
-
-        html.dark-mode ::-webkit-scrollbar-track {
-            background: var(--dark-tertiary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--light-tertiary);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--border);
-        }
-
-        /* ==================== EMPTY STATE ==================== */
         .empty-state {
             display: flex;
             flex-direction: column;
@@ -1354,48 +705,35 @@
             font-size: 14px;
         }
 
-        /* ==================== PROGRESS BAR ==================== */
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--light-tertiary);
-            border-radius: 4px;
-            overflow: hidden;
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            transition: width 0.3s ease;
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
         }
 
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            margin-top: 5px;
-            color: var(--text-secondary);
+        .text-center {
+            text-align: center;
         }
 
-        /* ==================== RISK INDICATOR ==================== */
-        .risk-indicator {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
 
-        .risk-indicator.low {
-            background: var(--success);
-        }
+            .search-box input {
+                width: 100%;
+            }
 
-        .risk-indicator.medium {
-            background: var(--warning);
-        }
-
-        .risk-indicator.high {
-            background: var(--danger);
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1507,19 +845,9 @@
                     </div>
 
                     <div class="header-actions">
-                        <button class="icon-btn" id="notificationBtn" title="Notifications">
-                            <i class="ri-notification-line"></i>
-                            <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
-                        </button>
-
                         <button class="icon-btn" id="themeToggle" title="Toggle Theme">
                             <i class="ri-moon-line"></i>
                         </button>
-
-                        <div class="user-menu" id="userMenu">
-                            <div class="avatar" id="userAvatar">CH</div>
-                            <i class="ri-arrow-down-s-line" style="color: var(--text-secondary); font-size: 20px;"></i>
-                        </div>
                     </div>
                 </div>
             </header>
@@ -1527,7 +855,7 @@
             <!-- CONTENT AREA -->
             <div class="content-area" id="contentArea">
                 <!-- DASHBOARD PAGE -->
-                <div class="page" id="dashboard-page">
+                <div class="page active" id="dashboard-page" data-page="dashboard">
                     <div class="page-header">
                         <div>
                             <h2 class="page-title">LC Management Dashboard</h2>
@@ -1542,101 +870,41 @@
                     </div>
 
                     <!-- SUMMARY CARDS -->
-                    <div class="cards-grid" id="summaryCards">
+                    <div class="cards-grid">
                         <div class="card">
                             <div class="card-header">
-                                <div>
-                                    <div class="card-title">Total LC Cases</div>
-                                </div>
-                                <div class="card-icon primary">
-                                    <i class="ri-file-list-line"></i>
-                                </div>
+                                <div><div class="card-title">Total LC Cases</div></div>
+                                <div class="card-icon primary"><i class="ri-file-list-line"></i></div>
                             </div>
-                            <div class="card-value" id="totalLCs">0</div>
-                            <div class="card-meta">
-                                <i class="ri-arrow-up-line" style="color: var(--success);"></i>
-                                <span>Active cases</span>
-                            </div>
+                            <div class="card-value">12</div>
+                            <div class="card-meta"><span>Active cases</span></div>
                         </div>
 
                         <div class="card">
                             <div class="card-header">
-                                <div>
-                                    <div class="card-title">Pending Review</div>
-                                </div>
-                                <div class="card-icon info">
-                                    <i class="ri-eye-line"></i>
-                                </div>
+                                <div><div class="card-title">Pending Review</div></div>
+                                <div class="card-icon warning"><i class="ri-eye-line"></i></div>
                             </div>
-                            <div class="card-value" id="pendingReview">0</div>
-                            <div class="card-meta">
-                                <i class="ri-time-line"></i>
-                                <span>Awaiting action</span>
-                            </div>
+                            <div class="card-value">3</div>
+                            <div class="card-meta"><span>Awaiting action</span></div>
                         </div>
 
                         <div class="card">
                             <div class="card-header">
-                                <div>
-                                    <div class="card-title">Approved</div>
-                                </div>
-                                <div class="card-icon success">
-                                    <i class="ri-check-double-line"></i>
-                                </div>
+                                <div><div class="card-title">Approved</div></div>
+                                <div class="card-icon success"><i class="ri-check-double-line"></i></div>
                             </div>
-                            <div class="card-value" id="approvedCount">0</div>
-                            <div class="card-meta">
-                                <i class="ri-arrow-up-line" style="color: var(--success);"></i>
-                                <span>Ready for payment</span>
-                            </div>
+                            <div class="card-value">8</div>
+                            <div class="card-meta"><span>Ready for payment</span></div>
                         </div>
 
                         <div class="card">
                             <div class="card-header">
-                                <div>
-                                    <div class="card-title">Discrepancies</div>
-                                </div>
-                                <div class="card-icon danger">
-                                    <i class="ri-error-warning-line"></i>
-                                </div>
+                                <div><div class="card-title">Discrepancies</div></div>
+                                <div class="card-icon danger"><i class="ri-error-warning-line"></i></div>
                             </div>
-                            <div class="card-value" id="discrepancyCount">0</div>
-                            <div class="card-meta">
-                                <i class="ri-alert-line"></i>
-                                <span>Require attention</span>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div>
-                                    <div class="card-title">Docs Awaiting Upload</div>
-                                </div>
-                                <div class="card-icon warning">
-                                    <i class="ri-upload-cloud-line"></i>
-                                </div>
-                            </div>
-                            <div class="card-value" id="docsAwaitingUpload">0</div>
-                            <div class="card-meta">
-                                <i class="ri-time-line"></i>
-                                <span>Not yet submitted</span>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div>
-                                    <div class="card-title">Expiring Soon</div>
-                                </div>
-                                <div class="card-icon warning">
-                                    <i class="ri-calendar-warning-line"></i>
-                                </div>
-                            </div>
-                            <div class="card-value" id="expiringCount">0</div>
-                            <div class="card-meta">
-                                <i class="ri-alert-line"></i>
-                                <span>Within 30 days</span>
-                            </div>
+                            <div class="card-value">1</div>
+                            <div class="card-meta"><span>Require attention</span></div>
                         </div>
                     </div>
 
@@ -1665,10 +933,6 @@
                     <div class="table-container">
                         <div class="table-header">
                             <div class="table-title">Recent LC Cases</div>
-                            <button class="btn btn-secondary btn-small">
-                                <i class="ri-arrow-right-line"></i>
-                                View All
-                            </button>
                         </div>
                         <div style="overflow-x: auto;">
                             <table>
@@ -1680,16 +944,13 @@
                                         <th>Status</th>
                                         <th>Documents</th>
                                         <th>Compliance</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="recentLCsTable">
+                                <tbody>
                                     <tr>
-                                        <td colspan="7" class="text-center" style="padding: 40px;">
+                                        <td colspan="6" class="text-center" style="padding: 40px;">
                                             <div class="empty-state">
-                                                <div class="empty-state-icon">
-                                                    <i class="ri-inbox-line"></i>
-                                                </div>
+                                                <div class="empty-state-icon"><i class="ri-inbox-line"></i></div>
                                                 <div class="empty-state-title">No LC Cases Yet</div>
                                                 <div class="empty-state-text">Create your first LC case to get started</div>
                                             </div>
@@ -1702,11 +963,11 @@
                 </div>
 
                 <!-- LC CASES PAGE -->
-                <div class="page" id="lc-cases-page" style="display: none;">
+                <div class="page" id="lc-cases-page" data-page="lc-cases">
                     <div class="page-header">
                         <h2 class="page-title">LC Cases Management</h2>
                         <div class="page-actions">
-                            <button class="btn btn-primary" id="createLCBtn2">
+                            <button class="btn btn-primary">
                                 <i class="ri-add-line"></i>
                                 Create New LC
                             </button>
@@ -1716,13 +977,6 @@
                     <div class="table-container">
                         <div class="table-header">
                             <div class="table-title">All LC Cases</div>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="text" id="lcSearchBox" class="form-control" placeholder="Search..." style="width: 250px;">
-                                <button class="btn btn-secondary btn-small" id="filterBtn">
-                                    <i class="ri-filter-line"></i>
-                                    Filter
-                                </button>
-                            </div>
                         </div>
                         <div style="overflow-x: auto;">
                             <table>
@@ -1735,10 +989,18 @@
                                         <th>Currency</th>
                                         <th>Expiry Date</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="lcCasesTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="text-center" style="padding: 40px;">
+                                            <div class="empty-state">
+                                                <div class="empty-state-icon"><i class="ri-file-list-line"></i></div>
+                                                <div class="empty-state-title">No LC Cases</div>
+                                                <div class="empty-state-text">Create a new LC case to begin</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1746,32 +1008,31 @@
                 </div>
 
                 <!-- DOCUMENTS PAGE -->
-                <div class="page" id="documents-page" style="display: none;">
+                <div class="page" id="documents-page" data-page="documents">
                     <div class="page-header">
                         <h2 class="page-title">Document Upload Center</h2>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Select LC Case</label>
-                        <select id="docLCSelect" class="form-control">
+                        <select class="form-control">
                             <option value="">-- Select LC Case --</option>
                         </select>
                     </div>
 
-                    <div class="table-container" style="margin-bottom: 30px;">
+                    <div class="table-container">
                         <div class="table-header">
                             <div class="table-title">Drop Zone - Drag & Drop Documents</div>
                         </div>
                         <div style="padding: 20px;">
-                            <div class="drop-zone" id="dropZone">
-                                <div class="drop-zone-icon">
+                            <div style="border: 2px dashed var(--border); border-radius: 8px; padding: 40px; text-align: center; background: var(--light-secondary);">
+                                <div style="font-size: 48px; color: var(--primary); margin-bottom: 10px;">
                                     <i class="ri-upload-cloud-line"></i>
                                 </div>
-                                <div class="drop-zone-text">
+                                <div style="color: var(--text-secondary);">
                                     <strong>Drag and drop files here</strong><br>
                                     or click to select files
                                 </div>
-                                <input type="file" id="fileInput" multiple style="display: none;">
                             </div>
                         </div>
                     </div>
@@ -1789,11 +1050,18 @@
                                         <th>Upload Date</th>
                                         <th>File Size</th>
                                         <th>Status</th>
-                                        <th>Version</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="documentsTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center" style="padding: 40px;">
+                                            <div class="empty-state">
+                                                <div class="empty-state-icon"><i class="ri-file-upload-line"></i></div>
+                                                <div class="empty-state-title">No Documents Yet</div>
+                                                <div class="empty-state-text">Upload documents to get started</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1801,14 +1069,14 @@
                 </div>
 
                 <!-- COMPLIANCE CHECKER PAGE -->
-                <div class="page" id="compliance-page" style="display: none;">
+                <div class="page" id="compliance-page" data-page="compliance">
                     <div class="page-header">
                         <h2 class="page-title">Intelligent LC Compliance Checker</h2>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Select LC Case</label>
-                        <select id="complianceLCSelect" class="form-control">
+                        <select class="form-control">
                             <option value="">-- Select LC Case --</option>
                         </select>
                     </div>
@@ -1818,11 +1086,9 @@
                             <div class="table-header">
                                 <div class="table-title">Document Checklist</div>
                             </div>
-                            <div style="padding: 20px;" id="complianceChecklistContainer">
+                            <div style="padding: 20px;">
                                 <div class="empty-state">
-                                    <div class="empty-state-icon">
-                                        <i class="ri-file-list-line"></i>
-                                    </div>
+                                    <div class="empty-state-icon"><i class="ri-file-list-line"></i></div>
                                     <div class="empty-state-title">Select an LC Case</div>
                                     <div class="empty-state-text">Choose an LC case to view its document requirements</div>
                                 </div>
@@ -1833,32 +1099,23 @@
                             <div class="table-header">
                                 <div class="table-title">Compliance Score</div>
                             </div>
-                            <div style="padding: 20px;">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div style="font-size: 48px; font-weight: 700; color: var(--primary); margin-bottom: 10px;" id="complianceScore">0%</div>
-                                    <div style="color: var(--text-secondary); font-size: 14px;">Overall Compliance</div>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="complianceProgressFill" style="width: 0%;"></div>
-                                </div>
-                                <div class="progress-text">
-                                    <span>Documents Reviewed</span>
-                                    <span id="docsReviewedCount">0/0</span>
-                                </div>
+                            <div style="padding: 20px; text-align: center;">
+                                <div style="font-size: 48px; font-weight: 700; color: var(--primary); margin-bottom: 10px;">0%</div>
+                                <div style="color: var(--text-secondary); font-size: 14px;">Overall Compliance</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- DISCREPANCIES PAGE -->
-                <div class="page" id="discrepancies-page" style="display: none;">
+                <div class="page" id="discrepancies-page" data-page="discrepancies">
                     <div class="page-header">
                         <h2 class="page-title">Discrepancy Dashboard</h2>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Filter by Status</label>
-                        <select id="discrepancyFilterStatus" class="form-control">
+                        <label class="form-label">Filter by Severity</label>
+                        <select class="form-control">
                             <option value="">All Discrepancies</option>
                             <option value="critical">Critical</option>
                             <option value="major">Major</option>
@@ -1877,12 +1134,19 @@
                                         <th>LC Number</th>
                                         <th>Description</th>
                                         <th>Severity</th>
-                                        <th>Affected Document</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="discrepanciesTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4" class="text-center" style="padding: 40px;">
+                                            <div class="empty-state">
+                                                <div class="empty-state-icon"><i class="ri-checkbox-circle-line"></i></div>
+                                                <div class="empty-state-title">No Discrepancies</div>
+                                                <div class="empty-state-text">All LCs are in compliance</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1890,10 +1154,10 @@
                 </div>
 
                 <!-- TASKS PAGE -->
-                <div class="page" id="tasks-page" style="display: none;">
+                <div class="page" id="tasks-page" data-page="tasks">
                     <div class="page-header">
                         <h2 class="page-title">Task Management</h2>
-                        <button class="btn btn-primary" id="createTaskBtn">
+                        <button class="btn btn-primary">
                             <i class="ri-add-line"></i>
                             Create Task
                         </button>
@@ -1910,13 +1174,21 @@
                                         <th>Task</th>
                                         <th>LC Number</th>
                                         <th>Assigned To</th>
-                                        <th>Role</th>
                                         <th>Due Date</th>
                                         <th>Priority</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tasksTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" class="text-center" style="padding: 40px;">
+                                            <div class="empty-state">
+                                                <div class="empty-state-icon"><i class="ri-task-line"></i></div>
+                                                <div class="empty-state-title">No Active Tasks</div>
+                                                <div class="empty-state-text">Create a new task to get started</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1924,7 +1196,7 @@
                 </div>
 
                 <!-- CALENDAR PAGE -->
-                <div class="page" id="calendar-page" style="display: none;">
+                <div class="page" id="calendar-page" data-page="calendar">
                     <div class="page-header">
                         <h2 class="page-title">LC Calendar & Deadlines</h2>
                     </div>
@@ -1940,11 +1212,19 @@
                                         <th>Event Type</th>
                                         <th>LC Number</th>
                                         <th>Date</th>
-                                        <th>Description</th>
                                         <th>Days Remaining</th>
                                     </tr>
                                 </thead>
-                                <tbody id="calendarTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4" class="text-center" style="padding: 40px;">
+                                            <div class="empty-state">
+                                                <div class="empty-state-icon"><i class="ri-calendar-line"></i></div>
+                                                <div class="empty-state-title">No Upcoming Events</div>
+                                                <div class="empty-state-text">Create LC cases to see upcoming deadlines</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1952,42 +1232,28 @@
                 </div>
 
                 <!-- REPORTS PAGE -->
-                <div class="page" id="reports-page" style="display: none;">
+                <div class="page" id="reports-page" data-page="reports">
                     <div class="page-header">
                         <h2 class="page-title">Reports & Analytics</h2>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
-                        <button class="card cursor-pointer" style="text-align: center; border: 2px solid var(--border);">
-                            <div style="font-size: 32px; margin-bottom: 10px;">
-                                <i class="ri-file-pdf-line" style="color: var(--danger);"></i>
-                            </div>
+                        <button class="card" style="text-align: center; border: 2px solid var(--border); cursor: pointer;">
+                            <div style="font-size: 32px; margin-bottom: 10px;"><i class="ri-file-pdf-line" style="color: var(--danger);"></i></div>
                             <div style="font-weight: 600; color: var(--text); margin-bottom: 5px;">LC Summary Report</div>
                             <div style="font-size: 12px; color: var(--text-secondary);">Export as PDF</div>
                         </button>
 
-                        <button class="card cursor-pointer" style="text-align: center; border: 2px solid var(--border);">
-                            <div style="font-size: 32px; margin-bottom: 10px;">
-                                <i class="ri-alert-line" style="color: var(--warning);"></i>
-                            </div>
+                        <button class="card" style="text-align: center; border: 2px solid var(--border); cursor: pointer;">
+                            <div style="font-size: 32px; margin-bottom: 10px;"><i class="ri-alert-line" style="color: var(--warning);"></i></div>
                             <div style="font-weight: 600; color: var(--text); margin-bottom: 5px;">Discrepancy Report</div>
                             <div style="font-size: 12px; color: var(--text-secondary);">Issues & Resolutions</div>
                         </button>
 
-                        <button class="card cursor-pointer" style="text-align: center; border: 2px solid var(--border);">
-                            <div style="font-size: 32px; margin-bottom: 10px;">
-                                <i class="ri-calendar-line" style="color: var(--primary);"></i>
-                            </div>
+                        <button class="card" style="text-align: center; border: 2px solid var(--border); cursor: pointer;">
+                            <div style="font-size: 32px; margin-bottom: 10px;"><i class="ri-calendar-line" style="color: var(--primary);"></i></div>
                             <div style="font-weight: 600; color: var(--text); margin-bottom: 5px;">Shipment Schedule</div>
                             <div style="font-size: 12px; color: var(--text-secondary);">Timeline View</div>
-                        </button>
-
-                        <button class="card cursor-pointer" style="text-align: center; border: 2px solid var(--border);">
-                            <div style="font-size: 32px; margin-bottom: 10px;">
-                                <i class="ri-bar-chart-line" style="color: var(--success);"></i>
-                            </div>
-                            <div style="font-weight: 600; color: var(--text); margin-bottom: 5px;">Analytics Dashboard</div>
-                            <div style="font-size: 12px; color: var(--text-secondary);">Performance Metrics</div>
                         </button>
                     </div>
 
@@ -2013,19 +1279,18 @@
                 </div>
 
                 <!-- AUDIT TRAIL PAGE -->
-                <div class="page" id="audit-trail-page" style="display: none;">
+                <div class="page" id="audit-trail-page" data-page="audit-trail">
                     <div class="page-header">
                         <h2 class="page-title">Audit Trail & Activity Log</h2>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Filter by Action Type</label>
-                        <select id="auditFilterType" class="form-control">
+                        <select class="form-control">
                             <option value="">All Activities</option>
                             <option value="create">Created</option>
                             <option value="update">Updated</option>
                             <option value="delete">Deleted</option>
-                            <option value="upload">Uploaded</option>
                         </select>
                     </div>
 
@@ -2044,7 +1309,16 @@
                                         <th>Changes</th>
                                     </tr>
                                 </thead>
-                                <tbody id="auditTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center" style="padding: 40px;">
+                                            <div class="empty-state">
+                                                <div class="empty-state-icon"><i class="ri-history-line"></i></div>
+                                                <div class="empty-state-title">No Activity Yet</div>
+                                                <div class="empty-state-text">All activities will be logged here</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -2052,7 +1326,7 @@
                 </div>
 
                 <!-- SETTINGS PAGE -->
-                <div class="page" id="settings-page" style="display: none;">
+                <div class="page" id="settings-page" data-page="settings">
                     <div class="page-header">
                         <h2 class="page-title">Settings & Configuration</h2>
                     </div>
@@ -2062,20 +1336,19 @@
                             <h3 style="margin-bottom: 15px; font-weight: 600;">Profile Settings</h3>
                             <div class="form-group">
                                 <label class="form-label">User Name</label>
-                                <input type="text" class="form-control" value="Chief Officer" id="settingsUsername">
+                                <input type="text" class="form-control" value="Chief Officer">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" value="officer@bank.com" id="settingsEmail">
+                                <input type="email" class="form-control" value="officer@bank.com">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Role</label>
-                                <select class="form-control" id="settingsRole">
+                                <select class="form-control">
                                     <option value="admin">Administrator</option>
                                     <option value="checker" selected>Checker</option>
                                     <option value="maker">Maker</option>
                                     <option value="reviewer">Reviewer</option>
-                                    <option value="viewer">Viewer</option>
                                 </select>
                             </div>
                             <button class="btn btn-primary">Save Changes</button>
@@ -2093,12 +1366,6 @@
                                     <span>Enable PIN Login</span>
                                 </label>
                             </div>
-                            <div class="form-group">
-                                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                    <input type="checkbox" checked>
-                                    <span>Require Password Lock</span>
-                                </label>
-                            </div>
                             <button class="btn btn-secondary">Change PIN</button>
                         </div>
                     </div>
@@ -2107,189 +1374,196 @@
         </div>
     </div>
 
-    <!-- MODAL: Create LC -->
-    <div class="modal-overlay" id="createLCModal">
-        <div class="modal" style="max-width: 900px;">
-            <div class="modal-header">
-                <h3 class="modal-title">Create New Letter of Credit (LC)</h3>
-                <button class="modal-close" id="closeCreateLCModal">
-                    <i class="ri-close-line"></i>
-                </button>
-            </div>
-            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">LC Number *</label>
-                        <input type="text" class="form-control" id="lcNumber" placeholder="e.g., LC/2024/001">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Issue Date *</label>
-                        <input type="date" class="form-control" id="lcIssueDate">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Issuing Bank *</label>
-                        <input type="text" class="form-control" id="issuingBank" placeholder="e.g., HSBC, Citi, Standard Chartered">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Advising Bank *</label>
-                        <input type="text" class="form-control" id="advisingBank">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Applicant *</label>
-                        <input type="text" class="form-control" id="applicant" placeholder="Importer / Buyer Name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Beneficiary *</label>
-                        <input type="text" class="form-control" id="beneficiary" placeholder="Exporter / Seller Name">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">LC Amount *</label>
-                        <input type="number" class="form-control" id="lcAmount" placeholder="0.00" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Currency *</label>
-                        <select class="form-control" id="currency">
-                            <option value="">Select Currency</option>
-                            <option value="USD">USD - US Dollar</option>
-                            <option value="EUR">EUR - Euro</option>
-                            <option value="GBP">GBP - British Pound</option>
-                            <option value="JPY">JPY - Japanese Yen</option>
-                            <option value="CNY">CNY - Chinese Yuan</option>
-                            <option value="AED">AED - UAE Dirham</option>
-                            <option value="SGD">SGD - Singapore Dollar</option>
-                            <option value="HKD">HKD - Hong Kong Dollar</option>
-                            <option value="INR">INR - Indian Rupee</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Tolerance (%) *</label>
-                        <input type="number" class="form-control" id="tolerance" placeholder="e.g., 5" value="5" step="0.5">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Expiry Date *</label>
-                        <input type="date" class="form-control" id="expiryDate">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Latest Shipment Date *</label>
-                        <input type="date" class="form-control" id="latestShipmentDate">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Latest Presentation Date *</label>
-                        <input type="date" class="form-control" id="latestPresentationDate">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Incoterms *</label>
-                        <select class="form-control" id="incoterms">
-                            <option value="">Select Incoterms</option>
-                            <option value="EXW">EXW - Ex Works</option>
-                            <option value="FCA">FCA - Free Carrier</option>
-                            <option value="CPT">CPT - Carriage Paid To</option>
-                            <option value="CIP">CIP - Carriage and Insurance Paid To</option>
-                            <option value="DAP">DAP - Delivered at Place</option>
-                            <option value="DPU">DPU - Delivered at Place Unloaded</option>
-                            <option value="DDP">DDP - Delivered Duty Paid</option>
-                            <option value="FOB">FOB - Free on Board</option>
-                            <option value="CFR">CFR - Cost and Freight</option>
-                            <option value="CIF">CIF - Cost, Insurance and Freight</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Payment Terms *</label>
-                        <select class="form-control" id="paymentTerms">
-                            <option value="">Select Payment Terms</option>
-                            <option value="at_sight">At Sight</option>
-                            <option value="30_days">30 Days After Sight</option>
-                            <option value="60_days">60 Days After Sight</option>
-                            <option value="90_days">90 Days After Sight</option>
-                            <option value="at_arrival">At Arrival of Goods</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Country of Origin *</label>
-                        <input type="text" class="form-control" id="countryOfOrigin" placeholder="e.g., China, Germany">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Country of Destination *</label>
-                        <input type="text" class="form-control" id="countryOfDestination" placeholder="e.g., USA, UK">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Port of Loading *</label>
-                        <input type="text" class="form-control" id="portOfLoading" placeholder="e.g., Shanghai, Hamburg">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Port of Discharge *</label>
-                        <input type="text" class="form-control" id="portOfDischarge" placeholder="e.g., Los Angeles, Rotterdam">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Goods Description *</label>
-                        <input type="text" class="form-control" id="goodsDescription" placeholder="e.g., Electronic Components">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">HS Code *</label>
-                        <input type="text" class="form-control" id="hsCode" placeholder="e.g., 8471.30.00">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                            <input type="checkbox" id="partialShipment">
-                            <span>Partial Shipment Allowed</span>
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                            <input type="checkbox" id="transshipment">
-                            <span>Transshipment Allowed</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Special Instructions / Conditions</label>
-                    <textarea class="form-control" id="specialConditions" rows="3" placeholder="Any special conditions or instructions..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="cancelCreateLCBtn">Cancel</button>
-                <button class="btn btn-primary" id="saveCreateLCBtn">Create LC</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST CONTAINER -->
-    <div class="toast-container" id="toastContainer"></div>
-
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
-    <script src="https://unpkg.com/flatpickr"></script>
-    <script src="app.js"></script>
+    <script>
+        // Navigation system - FIXED
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const headerTitle = document.getElementById('headerTitle');
+        const sidebar = document.getElementById('sidebar');
+        const toggleSidebarBtn = document.getElementById('toggleSidebar');
+        const themeToggle = document.getElementById('themeToggle');
+
+        // Navigation click handlers
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageName = this.getAttribute('data-page');
+                
+                // Remove active class from all nav links
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked nav link
+                this.classList.add('active');
+                
+                // Hide all pages
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Show selected page
+                const selectedPage = document.getElementById(pageName + '-page');
+                if (selectedPage) {
+                    selectedPage.classList.add('active');
+                }
+                
+                // Update header title based on nav text
+                const navText = this.querySelector('span');
+                if (navText) {
+                    headerTitle.textContent = navText.textContent;
+                }
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.add('collapsed');
+                }
+            });
+        });
+
+        // Sidebar toggle
+        toggleSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.documentElement.classList.contains('dark-mode')) {
+                icon.className = 'ri-sun-line';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'ri-moon-line';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            themeToggle.querySelector('i').className = 'ri-sun-line';
+        }
+
+        // Initialize charts
+        function initializeCharts() {
+            // Status Chart
+            const statusCtx = document.getElementById('statusChart');
+            if (statusCtx) {
+                new Chart(statusCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Approved', 'Pending', 'Discrepancies', 'Presented'],
+                        datasets: [{
+                            data: [8, 3, 1, 0],
+                            backgroundColor: ['#10b981', '#f59e0b', '#ef4444', '#3b82f6'],
+                            borderWidth: 2,
+                            borderColor: getComputedStyle(document.documentElement).getPropertyValue('--light')
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Completion Chart
+            const completionCtx = document.getElementById('completionChart');
+            if (completionCtx) {
+                new Chart(completionCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['LC 001', 'LC 002', 'LC 003', 'LC 004'],
+                        datasets: [{
+                            label: 'Completion %',
+                            data: [100, 85, 60, 40],
+                            backgroundColor: '#0066cc',
+                            borderColor: '#004999',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Discrepancy Type Chart
+            const discrepancyCtx = document.getElementById('discrepancyTypeChart');
+            if (discrepancyCtx) {
+                new Chart(discrepancyCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Amount Mismatch', 'Date Conflict', 'Missing Signature', 'Spelling Error'],
+                        datasets: [{
+                            data: [30, 25, 25, 20],
+                            backgroundColor: ['#ef4444', '#f59e0b', '#3b82f6', '#10b981'],
+                            borderWidth: 2,
+                            borderColor: getComputedStyle(document.documentElement).getPropertyValue('--light')
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Currency Chart
+            const currencyCtx = document.getElementById('currencyChart');
+            if (currencyCtx) {
+                new Chart(currencyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['USD', 'EUR', 'GBP', 'CNY', 'AED'],
+                        datasets: [{
+                            label: 'Number of LCs',
+                            data: [5, 3, 2, 1, 1],
+                            backgroundColor: '#00a3e0',
+                            borderColor: '#0066cc',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCharts();
+        });
+
+        // Show dashboard on first load
+        window.addEventListener('load', () => {
+            document.querySelector('[data-page="dashboard"]').classList.add('active');
+        });
+    </script>
 </body>
 </html>
